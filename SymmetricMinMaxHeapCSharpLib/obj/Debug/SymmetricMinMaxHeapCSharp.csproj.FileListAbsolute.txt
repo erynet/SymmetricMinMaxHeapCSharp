@@ -1,0 +1,1 @@
+C:\Users\ery\Documents\Visual Studio 2013\Projects\SymmetricMinMaxHeapCSharp\SymmetricMinMaxHeapCSharp\bin\Debug\SymmetricMinMaxHeapCSharp.exe.config
