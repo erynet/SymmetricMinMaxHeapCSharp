@@ -6,10 +6,56 @@ using System.Threading.Tasks;
 
 namespace SymmetricMinMaxHeapCSharpLib
 {
-    class Program
+    public class SymmetricMinMaxHeap<T>
     {
-        static void Main(string[] args)
+        public SymmetricMinMaxHeap()
         {
+
         }
+
+        public ~SymmetricMinMaxHeap()
+        {
+
+        }
+
+        public void Insert(T value)
+        {
+
+        }
+
+        private T TakeMin()
+        {}
+        public T Min 
+        {
+            get { return TakeMin(); } 
+        }
+
+        private T TakeMax()
+        {}
+        public T Max
+        {
+            get { return TakeMax(); }
+        }
+
+        public void DeleteMin()
+        {
+
+        }
+
+        public void DeleteMax()
+        {
+
+        }
+
+        public void Clear()
+        {
+
+        }
+
+
+
+
+
+
     }
 }

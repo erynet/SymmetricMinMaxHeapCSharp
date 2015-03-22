@@ -51,6 +51,12 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SymmetricMinMaxHeapCSharpLib\SymmetricMinMaxHeapCSharpLib.csproj">
+      <Project>{251f70ae-76a6-42b3-901a-1af4573bd638}</Project>
+      <Name>SymmetricMinMaxHeapCSharpLib</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
