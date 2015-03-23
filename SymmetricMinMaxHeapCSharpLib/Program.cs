@@ -26,6 +26,7 @@ namespace SymmetricMinMaxHeapCSharpLib
                 this._ArraySize = InitialSize;
 
             this._L = new List<UInt64>(this._ArraySize);
+            this._L.AddRange(Enumerable.Repeat<UInt64>(UInt64.MinValue, this._ArraySize));
 
             this._InitialSize = InitialSize;
         }
@@ -69,7 +70,7 @@ namespace SymmetricMinMaxHeapCSharpLib
         private void Swap(Int32 indexA, Int32 indexB)
         {
             UInt64 temp = this._L[indexA];
-            this._L[indexB] = this._L[indexA];
+            this._L[indexA] = this._L[indexB];
             this._L[indexB] = temp;
         }
         private void Resize(Int32 size)
@@ -164,17 +165,25 @@ namespace SymmetricMinMaxHeapCSharpLib
             Int32 _lnode = 0, _rnode = 0;
             while (true)
             {
-                _lnode = SymmetricMinMaxHeap.llLnode(_CurrentIndex);
-                _rnode = SymmetricMinMaxHeap.llRnode(_CurrentIndex);
+                _lnode = _CurrentIndex * 2;//SymmetricMinMaxHeap.llLnode(_CurrentIndex);
+                _rnode = (_CurrentIndex * 2) + 2;//SymmetricMinMaxHeap.llRnode(_CurrentIndex);
 
-                if ((_lnode < this._Size) && (_rnode < this._Size))
+                if (_rnode < this._Size)
                 {
                     if (this._L[_lnode] < this._L[_rnode])
                     {
                         if (this._L[_lnode] < this._L[_CurrentIndex])
                         {
-                            this.Swap(_lnode, _CurrentIndex);
-                            _CurrentIndex = _lnode;
+                            if (this._L[_lnode] > this._L[_lnode + 1])
+                            {
+                                this.Swap(_lnode + 1, _CurrentIndex);
+                                _CurrentIndex = (_lnode + 1);
+                            }
+                            else
+                            {
+                                this.Swap(_lnode, _CurrentIndex);
+                                _CurrentIndex = _lnode;
+                            }
                         }
                         else
                             break;
@@ -184,6 +193,17 @@ namespace SymmetricMinMaxHeapCSharpLib
                     {
                         if (this._L[_rnode] < this._L[_CurrentIndex])
                         {
+
+                            if ((_rnode + 1) < this._Size)
+                            {
+                                if (this._L[_rnode] > this._L[_rnode + 1])
+                                {
+                                    this.Swap(_rnode + 1, _CurrentIndex);
+                                    _CurrentIndex = (_rnode + 1);
+                                    continue;
+                                }
+                            }
+
                             this.Swap(_rnode, _CurrentIndex);
                             _CurrentIndex = _rnode;
                         }
@@ -194,25 +214,32 @@ namespace SymmetricMinMaxHeapCSharpLib
                 else if (_lnode < this._Size)
                 {
                     if (this._L[_lnode] < this._L[_CurrentIndex])
-                        {
-                            this.Swap(_lnode, _CurrentIndex);
-                            _CurrentIndex = _lnode;
-                        }
-                        else
-                            break;
-                }
-                else if (_rnode < this._Size)
-                {
-                    if (this._L[_rnode] < this._L[_CurrentIndex])
                     {
-                        this.Swap(_rnode, _CurrentIndex);
-                        _CurrentIndex = _rnode;
+                        if ((_lnode + 1) < this._Size)
+                        {
+                            if (this._L[_lnode] > this._L[_lnode + 1])
+                            {
+                                this.Swap(_lnode + 1, _CurrentIndex);
+                                _CurrentIndex = (_lnode + 1);
+                                continue;
+                            }
+                        }
+
+                        this.Swap(_lnode, _CurrentIndex);
+                        _CurrentIndex = _lnode;
                     }
                     else
                         break;
                 }
                 else
+                {
+                    if ((_CurrentIndex + 1) < this._Size)
+                    {
+                        if (this._L[_CurrentIndex] > this._L[_CurrentIndex + 1])
+                            this.Swap(_CurrentIndex, _CurrentIndex + 1);
+                    }
                     break;
+                }
             }
         }
 
@@ -225,17 +252,26 @@ namespace SymmetricMinMaxHeapCSharpLib
             Int32 _lnode = 0, _rnode = 0;
             while (true)
             {
-                _lnode = SymmetricMinMaxHeap.lrLnode(_CurrentIndex);
-                _rnode = SymmetricMinMaxHeap.lrRnode(_CurrentIndex);
+                _lnode = (_CurrentIndex * 2) - 1;//SymmetricMinMaxHeap.lrLnode(_CurrentIndex);
+                _rnode = (_CurrentIndex * 2) + 1;//SymmetricMinMaxHeap.lrRnode(_CurrentIndex);
 
-                if ((_lnode < this._Size) && (_rnode < this._Size))
+                //if ((_lnode < this._Size) && (_rnode < this._Size))
+                if (_rnode < this._Size)
                 {
                     if (this._L[_lnode] > this._L[_rnode])
                     {
                         if (this._L[_lnode] > this._L[_CurrentIndex])
                         {
-                            this.Swap(_lnode, _CurrentIndex);
-                            _CurrentIndex = _lnode;
+                            if (this._L[_lnode] < this._L[_lnode + 1])
+                            {
+                                this.Swap(_lnode + 1, _CurrentIndex);
+                                _CurrentIndex = (_lnode + 1);
+                            }
+                            else
+                            {
+                                this.Swap(_lnode, _CurrentIndex);
+                                _CurrentIndex = _lnode;
+                            }
                         }
                         else
                             break;
@@ -245,6 +281,17 @@ namespace SymmetricMinMaxHeapCSharpLib
                     {
                         if (this._L[_rnode] > this._L[_CurrentIndex])
                         {
+
+                            if ((_rnode + 1) < this._Size)
+                            {
+                                if (this._L[_rnode] < this._L[_rnode + 1])
+                                {
+                                    this.Swap(_rnode + 1, _CurrentIndex);
+                                    _CurrentIndex = (_rnode + 1);
+                                    continue;
+                                }
+                            }
+
                             this.Swap(_rnode, _CurrentIndex);
                             _CurrentIndex = _rnode;
                         }
@@ -256,24 +303,42 @@ namespace SymmetricMinMaxHeapCSharpLib
                 {
                     if (this._L[_lnode] > this._L[_CurrentIndex])
                     {
+                        if ((_lnode + 1) < this._Size)
+                        {
+                            if (this._L[_lnode] < this._L[_lnode + 1])
+                            {
+                                this.Swap(_lnode + 1, _CurrentIndex);
+                                _CurrentIndex = (_lnode + 1);
+                                continue;
+                            }
+                        }
+
                         this.Swap(_lnode, _CurrentIndex);
                         _CurrentIndex = _lnode;
                     }
                     else
                         break;
                 }
-                else if (_rnode < this._Size)
-                {
-                    if (this._L[_rnode] > this._L[_CurrentIndex])
-                    {
-                        this.Swap(_rnode, _CurrentIndex);
-                        _CurrentIndex = _rnode;
-                    }
-                    else
-                        break;
-                }
+
+                //else if (_rnode < this._Size)
+                //{
+                //    if (this._L[_rnode] > this._L[_CurrentIndex])
+                //    {
+                //        this.Swap(_rnode, _CurrentIndex);
+                //        _CurrentIndex = _rnode;
+                //    }
+                //    else
+                //        break;
+                //}
                 else
+                {
+                    if ((_CurrentIndex + 1) < this._Size)
+                    {
+                        if (this._L[_CurrentIndex] < this._L[_CurrentIndex + 1])
+                            this.Swap(_CurrentIndex, _CurrentIndex + 1);
+                    }
                     break;
+                }
             }
         }
 
@@ -288,10 +353,14 @@ namespace SymmetricMinMaxHeapCSharpLib
         {
             return this._Size - 2;
         }
-
         public Int32 Size
         {
             get { return TakeSize(); }
+        }
+
+        public List<UInt64> Array
+        {
+            get { return this._L; }
         }
 
     }

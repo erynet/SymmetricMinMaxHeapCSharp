@@ -1,11 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.21005.1
+VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SymmetricMinMaxHeapCSharpLib", "SymmetricMinMaxHeapCSharpLib\SymmetricMinMaxHeapCSharpLib.csproj", "{251F70AE-76A6-42B3-901A-1AF4573BD638}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SymmetricMinMaxHeapCSharp", "SymmetricMinMaxHeapCSharp\SymmetricMinMaxHeapCSharp.csproj", "{573E2678-4DDA-4A0C-942A-1AD321BFE7E1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SymmetricMinMaxHeapCSharpTest", "SymmetricMinMaxHeapCSharp\SymmetricMinMaxHeapCSharpTest.csproj", "{573E2678-4DDA-4A0C-942A-1AD321BFE7E1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

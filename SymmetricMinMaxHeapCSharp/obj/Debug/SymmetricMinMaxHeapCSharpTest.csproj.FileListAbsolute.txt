@@ -1,1 +1,7 @@
 C:\Users\ery\Documents\Visual Studio 2013\Projects\SymmetricMinMaxHeapCSharp\SymmetricMinMaxHeapCSharpTest\bin\Debug\SymmetricMinMaxHeapCSharpTest.exe.config
+E:\Projects\CSharp\SymmetricMinMaxHeapCSharp\bin\Debug\SymmetricMinMaxHeapCSharpTest.exe.config
+E:\Projects\CSharp\SymmetricMinMaxHeapCSharp\bin\Debug\SymmetricMinMaxHeapCSharpTest.exe
+E:\Projects\CSharp\SymmetricMinMaxHeapCSharp\bin\Debug\SymmetricMinMaxHeapCSharpTest.pdb
+E:\Projects\CSharp\SymmetricMinMaxHeapCSharp\SymmetricMinMaxHeapCSharp\obj\Debug\SymmetricMinMaxHeapCSharpTest.csprojResolveAssemblyReference.cache
+E:\Projects\CSharp\SymmetricMinMaxHeapCSharp\SymmetricMinMaxHeapCSharp\obj\Debug\SymmetricMinMaxHeapCSharpTest.exe
+E:\Projects\CSharp\SymmetricMinMaxHeapCSharp\SymmetricMinMaxHeapCSharp\obj\Debug\SymmetricMinMaxHeapCSharpTest.pdb
