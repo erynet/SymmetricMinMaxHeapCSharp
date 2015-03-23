@@ -28,6 +28,10 @@ namespace SymmetricMinMaxHeapCSharpTest
             UInt64[] AscSorted = new UInt64[64];
             UInt64[] DscSorted = new UInt64[64];
 
+            System.Console.Write(System.Environment.NewLine);
+            System.Console.WriteLine("##### 64-Digit Random Sequence #####");
+            System.Console.Write(System.Environment.NewLine);
+
             PrintSample(sources);
 
             System.Console.Write(System.Environment.NewLine);
@@ -48,7 +52,8 @@ namespace SymmetricMinMaxHeapCSharpTest
             ViewArray(Heap);
 
             System.Console.Write(System.Environment.NewLine);
-            System.Console.WriteLine("Sort using SymmetricMinMaxHeap");
+            System.Console.WriteLine("##### Sort using SymmetricMinMaxHeap #####");
+            System.Console.Write(System.Environment.NewLine);
 
             for (int i = 0; i < 64; i++)
             {
