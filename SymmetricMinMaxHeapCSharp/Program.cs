@@ -12,56 +12,56 @@ namespace SymmetricMinMaxHeapCSharpTest
     {
         static void Main(string[] args)
         {
-            SymmetricMinMaxHeap heap = new SymmetricMinMaxHeap();
+            SymmetricMinMaxHeap Heap = new SymmetricMinMaxHeap();
+            SymmetricMinMaxHeap AscHeap = new SymmetricMinMaxHeap();
+            SymmetricMinMaxHeap DscHeap = new SymmetricMinMaxHeap();
 
-            UInt64[] sources = { 30, 10, 29, 11, 28, 12, 27, 13, 26, 14, 25, 15, 24, 16, 23, 17, 22, 18, 21, 19, 20, 40, 50, 60, 55, 45, 35};
+            UInt64[] sources =    { 6,  4, 46, 11, 10, 45, 13, 24, 
+                                   48, 20, 35, 62, 64, 37, 50, 22, 
+                                   25, 27, 36, 44, 38, 39, 17,  5, 
+                                   19, 51,  2,  7, 52, 30, 58, 33, 
+                                    1, 49, 29, 18, 42, 55, 53, 60, 
+                                   57, 40,  3, 15, 21, 54, 14, 61, 
+                                   59,  8, 12, 16, 56, 34, 32, 63, 
+                                   41, 28, 26, 47, 23, 43, 31, 9 };
 
-            System.Console.WriteLine("Insert Test\n");
+            UInt64[] AscSorted = new UInt64[64];
+            UInt64[] DscSorted = new UInt64[64];
+
+            PrintSample(sources);
+
+            System.Console.Write(System.Environment.NewLine);
+            System.Console.Write("Before Insert : ");
+            ViewArray(Heap);
+
             foreach (UInt64 s in sources)
             {
-                //heap.
-                System.Console.WriteLine("s : {0}", s);
-                System.Console.WriteLine("--- Before ---");
-                System.Console.WriteLine("heap.Size : {0}", heap.Size);
-                System.Console.WriteLine("heap.Min : {0}", heap.Min);
-                System.Console.WriteLine("heap.Max : {0}", heap.Max);
-                ViewArray(heap);
-
-                heap.Insert(s);
-                System.Console.WriteLine("--- After ---");
-                System.Console.WriteLine("heap.Size : {0}", heap.Size);
-                System.Console.WriteLine("heap.Min : {0}", heap.Min);
-                System.Console.WriteLine("heap.Max : {0}", heap.Max);
-                ViewArray(heap);
-
-                System.Console.WriteLine();
-                //System.Console.ReadKey();
+                Heap.Insert(s);
+                AscHeap.Insert(s);
+                DscHeap.Insert(s);
             }
 
-            System.Console.WriteLine("Delete Min / Max Test\n");
+            System.Console.Write(" After Insert : ");
+            ViewArray(Heap);
+            System.Console.Write(" After Clear  : ");
+            Heap.Clear();
+            ViewArray(Heap);
 
-            //for (int i = 0; i < sources.Length; i++)
-            while (heap.Size > 0)
+            System.Console.Write(System.Environment.NewLine);
+            System.Console.WriteLine("Sort using SymmetricMinMaxHeap");
+
+            for (int i = 0; i < 64; i++)
             {
-                //System.Console.WriteLine("Before Delete Min");
-                //System.Console.WriteLine("Current Min : {0}", heap.Min);
-                //ViewArray(heap);
-                //heap.DeleteMin();
-                //System.Console.WriteLine("After Delete Min");
-                //System.Console.WriteLine("Current Min : {0}", heap.Min);
-                //ViewArray(heap);
-
-                System.Console.WriteLine("Before Delete Max");
-                System.Console.WriteLine("Current Max : {0}", heap.Max);
-                ViewArray(heap);
-                heap.DeleteMax();
-                System.Console.WriteLine("After Delete Max");
-                System.Console.WriteLine("Current Min : {0}", heap.Max);
-                ViewArray(heap);
-
-                System.Console.WriteLine();
-                //System.Console.ReadKey();
+                AscSorted[i] = AscHeap.Min;
+                AscHeap.DeleteMin();
+                DscSorted[i] = DscHeap.Max;
+                DscHeap.DeleteMax();
             }
+
+            System.Console.WriteLine("----- Ascending -----");
+            PrintSample(AscSorted);
+            System.Console.WriteLine("----- Decending -----");
+            PrintSample(DscSorted);
         }
 
         static void ViewArray(SymmetricMinMaxHeap heap)
@@ -74,6 +74,18 @@ namespace SymmetricMinMaxHeapCSharpTest
                     System.Console.Write(", ");
             }
             System.Console.WriteLine(" ]");
+        }
+
+        static void PrintSample(UInt64[] sources)
+        {
+            for (int i = 0; i < 8; i++)
+            {
+                for (int j = 0; j < 8; j++)
+                {
+                    System.Console.Write("{0,2} ", sources[(i * 8) + j]);
+                }
+                System.Console.WriteLine("");
+            }
         }
     }
 }
